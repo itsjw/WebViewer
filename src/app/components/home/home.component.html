@@ -1,5 +1,8 @@
-<div class="container">
-  <h1 class="title">
-    {{title}}
-  </h1>
+<button (click)="new()">
+  New</button>
+<div id="webviews" class="webviews">
+  <div class="mini-view" *ngFor="let view of views">
+    <webview id="{{view.id}}" attr.partition="{{view.id}}" attr.src="{{view.url}}"></webview>
+  </div>
+
 </div>

@@ -6,6 +6,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { WebviewDirective } from './directives/webview.directive';
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 
@@ -16,7 +18,8 @@ import { ElectronService } from './providers/electron.service';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    WebviewDirective
   ],
   imports: [
     BrowserModule,

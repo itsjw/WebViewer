@@ -7,29 +7,64 @@ import { ElectronService } from 'app/providers/electron.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  title = `App works !`;
+
+  private views = [];
+  private session: any;
 
   constructor(private electronService: ElectronService) {
 
-    const BrowserWindow = this.electronService.Electron.remote.BrowserWindow;
-    const mainWindow = new BrowserWindow({
-      'width': 200,
-      'height': 100,
-      'center': true,
-      'title': 'Main window',
+    this.session = this.electronService.Electron.remote;
+
+    this.views.push({
+      id: '1513029575174',
+      url: 'http://whatismyip.host/'
     });
 
-    const proxy = 'random.se.hma.rocks';
 
-    // mainWindow.webContents.session.setProxy({ pacScript: '', proxyRules: proxy, proxyBypassRules: '' }, function () {
-    //   mainWindow.loadURL('https://whatismyipaddress.com/');
+
+    // const BrowserWindow = this.electronService.Electron.remote.BrowserWindow;
+    // const mainWindow = new BrowserWindow({
+    //   'width': 400,
+    //   'height': 300,
+    //   'center': true,
+    //   'title': 'Main window',
     // });
 
-    mainWindow.loadURL('https://whatismyipaddress.com/');
+    // const proxy = '180.247.178.186:8080';
+
+    // mainWindow.webContents.session.setProxy({ proxyRules: proxy }, function () {
+    //   mainWindow.loadURL('https://www.twitch.tv/cojl');
+    // });
+
+    // mainWindow.loadURL('https://whatismyipaddress.com/');
 
   }
 
   ngOnInit() {
+
   }
+
+  new() {
+
+    const id = Date.now();
+    this.views.push({
+      id: id,
+      url: 'http://www.google.se'
+    });
+
+    setTimeout(() => {
+
+      const cookies = this.electronService.Electron.remote.fromPartition('id').cookies;
+      cookies.get(
+        {},
+        result => console.log('Found the following cookies', result)
+      )
+      console.log(cookies);
+
+    }, 100);
+
+  }
+
+
 
 }
