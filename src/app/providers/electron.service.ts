@@ -11,6 +11,7 @@ export class ElectronService {
 
   ipcRenderer: typeof ipcRenderer;
   childProcess: typeof childProcess;
+  electronRemote;
   Electron;
 
   constructor() {
@@ -19,6 +20,10 @@ export class ElectronService {
       this.ipcRenderer = window.require('electron').ipcRenderer;
       this.childProcess = window.require('child_process');
       this.Electron = window.require('electron');
+
+      this.electronRemote = window.require('electron').remote;
+
+      ;
     }
   }
 
